@@ -31,7 +31,6 @@
           </div>
           <div class="form-group">
             <button type="button" class="btn btn-primary"  onclick="this.form.submit()">Search</button>
-           
           </div>
       </form>
     </div>

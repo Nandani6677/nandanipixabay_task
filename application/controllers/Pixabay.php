@@ -11,22 +11,30 @@ class Pixabay extends CI_Controller {
 			if($searchvalue){
 				$json = file_get_contents("https://pixabay.com/api/?key=19343160-436f9078207135509031dcad7&q=$searchvalue&image_type=photo&pretty=true");
 	        $obj = json_decode($json);
-	        $data['image_url']=$obj->hits;
+	        @$data['image_url']=$obj->hits;
+			}else{
+				$json = file_get_contents("https://pixabay.com/api/?key=19343160-436f9078207135509031dcad7&q=$searchvalue&image_type=photo&pretty=true");
+	        $obj = json_decode($json);
+	        @$data['image_url']=$obj->hits;
 			}
 		}elseif($search_type=='video'){
 			if($searchvalue){
 				$json1 = file_get_contents("https://pixabay.com/api/videos/?key=19343160-436f9078207135509031dcad7&q=$searchvalue&pretty=true");
 	        $obj1 = json_decode($json1);
-	        $data['video_url']=$obj1->hits;
+	        @$data['video_url']=$obj1->hits;
+			}else{
+				$json1 = file_get_contents("https://pixabay.com/api/videos/?key=19343160-436f9078207135509031dcad7&q=$searchvalue&pretty=true");
+	        $obj1 = json_decode($json1);
+	        @$data['video_url']=$obj1->hits;
 			}
 		}else{
 			$json = file_get_contents("https://pixabay.com/api/?key=19343160-436f9078207135509031dcad7&q=&image_type=photo&pretty=true");
 	        $obj = json_decode($json);
-	        $data['image_url']=$obj->hits;
+	        @$data['image_url']=$obj->hits;
 
 	        $json1 = file_get_contents("https://pixabay.com/api/videos/?key=19343160-436f9078207135509031dcad7&q=&pretty=true");
 	        $obj1 = json_decode($json1);
-	        $data['video_url']=$obj1->hits;
+	        @$data['video_url']=$obj1->hits;
 		}
 		
         
